@@ -18,5 +18,19 @@ policies:
     query: SELECT score FROM (SELECT case when COUNT(*) >= 1 then 1 ELSE 0 END AS score FROM processes WHERE (name = 'clamd') OR (name = 'freshclam')) WHERE score == 1;
     platform: linux
     critical: false
+  - path: ../lib/macos-device-health.policies.yml
+  - path: ../lib/windows-device-health.policies.yml
+  - path: ../lib/linux-device-health.policies.yml
+queries:
+  - path: ../lib/collect-usb-devices.queries.yml
+  - path: ../lib/collect-failed-login-attempts.queries.yml
+agent_options:
+  path: ../lib/agent-options.yml
 controls:
+  scripts:
+    - path: ../lib/remove-zoom-artifacts.script.sh
+    - path: ../lib/set-timezone.script.sh
+team_settings:
+  secrets:
+    - secret: "$FLEET_GLOBAL_ENROLL_SECRET"
 software:
