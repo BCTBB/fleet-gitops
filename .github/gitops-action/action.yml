@@ -15,6 +15,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Check if fleetctl exists
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        if [ -d "/usr/local/lib/node_modules/fleetctl" ];
+        then
+          rm -rf "/usr/local/lib/node_modules/fleetctl"
+        else
+          echo "directory does not exist on runner"
+        fi
+      
     - name: Install fleetctl
       shell: bash
       working-directory: ${{ inputs.working-directory }}
