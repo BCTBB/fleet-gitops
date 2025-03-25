@@ -30,7 +30,7 @@ controls:
   scripts:
     - path: ../lib/remove-zoom-artifacts.script.sh
     - path: ../lib/set-timezone.script.sh
-team_settings:
-  secrets:
-    - secret: "$FLEET_GLOBAL_ENROLL_SECRET"
+# team_settings:
+#   secrets:
+#     - secret: "$FLEET_GLOBAL_ENROLL_SECRET"
 software:
